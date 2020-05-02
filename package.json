@@ -11,7 +11,7 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.5"
   },
-  "homepage" : "https://hejianxinsir.github.io/react-fourButtons/",
+  "homepage" : "https://hejianxinsir.github.io/react-fourButtons/public/index.html",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
