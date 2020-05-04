@@ -150,3 +150,43 @@ export default App;
 
 ```
 
+## Hooks API
+
+useState 实例
+```
+function App(){
+  const [x /*值*/, y /*更新函数*/] = useState(0)
+  const [user, setUser] = useState({
+    name: 'janson',
+    age: 18,
+    hobbies: ['lol', 'dog', 'code']
+  })
+  const add = ()=>{
+    y(x+1)
+  }
+  const minus = ()=>{
+    y(x-1)
+  }
+
+  return (
+    <div>
+      <div>{x}</div>
+      <div>
+        <button onClick={add}>+1</button>
+        <button onClick={minus}>-1</button>
+      </div>
+    </div>
+  )
+}
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App/>, rootElement)
+
+```
+
+## 副作用
+副作用指什么？比如 function fn(){ console.log(1)}，此时你依赖了 console.log 这个天然存在的函数，如果别人把 console.log 函数改了。比如改成 console.log = function(){}  改成了空函数，这时候你就打印不出 1 了。
+
+这时候我们说，fn 是个有副作用的函数，因为你依赖了你自己不能控制的东西。
+
+与之相比，function fn2(a,b){return a+b} 这个函数就是没有副作用的函数，因为它不依赖其他不知道哪来的函数，这是我们能完全控制的，所以我们把它叫纯函数。
