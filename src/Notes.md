@@ -228,3 +228,46 @@ export default function App() {
   );
 }
 ```
+
+跳转的方法：
+1. window.location.hash = 'xxx' 可以用。hash 就是前端路由。
+2. window.location.pathname = ’xxx' 基本不考虑用，因为会刷新页面。
+3. window.history.pushState(obj, 'title', '/path') 如果后端会将所有路径都指向首页，我们就能用这种方法；否则后端傻逼的话，这种就不要用；或者你自己做后端。
+
+## 用 window.history.pushState(null, '', '/logIn') 做路由
+```
+import React, { useState } from "react";
+import "./styles.css";
+
+function Box1() {
+  return <div className="act">注册</div>;
+}
+function Box2() {
+  return <div className="act">登录</div>;
+}
+
+export default function App() {
+  let path = window.location.pathname;
+  let initUi = path === "/signUp" ? "注册" : "登录";
+  let [ui, setUi] = useState(initUi);
+  let onClickSignIn = () => {
+    setUi("登录");
+    // window.location.hash = "logIn";
+    window.history.pushState(null, "", "/logIn");
+  };
+  let onClickSignUp = () => {
+    setUi("注册");
+    // window.location.hash = "signUp";
+    window.history.pushState(null, "", "/signUp");
+  };
+
+  return (
+    <div className="App">
+      <button onClick={onClickSignUp}>注册</button>
+      <button onClick={onClickSignIn}>登录</button>
+      <div>{ui === "注册" ? <Box1 /> : <Box2 />}</div>
+    </div>
+  );
+}
+
+```
