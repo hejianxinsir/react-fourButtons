@@ -190,3 +190,41 @@ ReactDOM.render(<App/>, rootElement)
 这时候我们说，fn 是个有副作用的函数，因为你依赖了你自己不能控制的东西。
 
 与之相比，function fn2(a,b){return a+b} 这个函数就是没有副作用的函数，因为它不依赖其他不知道哪来的函数，这是我们能完全控制的，所以我们把它叫纯函数。
+
+## useEffect
+如果你的函数有副作用，就把它写在 useEffect 里面。
+
+## 用 hash 做路由：点击登录注册按钮
+```
+import React, { useState } from "react";
+import "./styles.css";
+
+function Box1() {
+  return <div className="act">注册</div>;
+}
+function Box2() {
+  return <div className="act">登录</div>;
+}
+
+export default function App() {
+  let hash = window.location.hash;
+  let initUi = hash === "signUp" ? "注册" : "登录";
+  let [ui, setUi] = useState(initUi);
+  let onClickSignIn = () => {
+    setUi("登录");
+    window.location.hash = "logIn";
+  };
+  let onClickSignUp = () => {
+    setUi("注册");
+    window.location.hash = "signUp";
+  };
+
+  return (
+    <div className="App">
+      <button onClick={onClickSignUp}>注册</button>
+      <button onClick={onClickSignIn}>登录</button>
+      <div>{ui === "注册" ? <Box1 /> : <Box2 />}</div>
+    </div>
+  );
+}
+```
