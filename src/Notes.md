@@ -1,3 +1,5 @@
+# React-Router / codesandbox 里执行代码
+
 ## 用 Context API 传值
 
 如下代码，n 的值是一层一层传到 f1 f2 f3 f4 的
@@ -271,3 +273,67 @@ export default function App() {
 }
 
 ```
+
+## React-Router 的用法
+```
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <div>
+          <Link to="/"><button>welcome</button></Link>
+          <br />
+          <Link to="/logIn">logIn</Link>
+          <br />
+          <Link to="/signUp">signUp</Link>
+        </div>
+
+        <Switch>
+          <Route path="/logIn">
+            <Box1 />
+          </Route>
+          <Route path="/signUp">
+            <Box2 />
+          </Route>
+          <Route path="/">
+            <Welcome />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function Welcome() {
+  return <h2 className="act">Welcome</h2>;
+}
+
+function Box1() {
+  return <h2 className="act">signIn</h2>;
+}
+
+function Box2() {
+  return <h2 className="act">signUp</h2>;
+}
+```
+
+## 生命周期 / 面试题
+
+1. shouldComponentUpdate 的作用是什么，为什么重要？
+答：它允许我们手动判断是否要更新组件，根据组件应用场景设置合理的返回值能帮我们避免不必要的更新。
+
+2. 性能优化是哪个周期函数？shouldComponentUpdate.
+
+3. 有哪些生命周期？...
+
+4. 在生命周期哪一步应该发送 ajax 请求？
+答: 一般放到 componentDidMount 里面。google 一下原因。
+
+5. setState 合并状态后的几个生命周期函数的调用顺序是？
+shouldComponentUpdate > componentWillUpdate > render > componentDidUpdate
+
+## React 的 CSS 解决方案
+
