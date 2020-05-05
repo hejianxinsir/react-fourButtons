@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 
 class App extends Component {
   render(){
+    let recordN = this.props.n
     return (
       <div className="App">
         <div>你点击了{this.props.n}次</div>
         <button onClick={()=>this.props.add1()}>+1</button>
         <button onClick={()=>this.props.add2()}>+2</button>
-        <button>单数则+1</button>
-        <button>一秒后+1</button>
+        <button onClick={()=>{this.props.add3(recordN)}}>单数则+1</button>
+        <button onClick={()=>this.props.add4()}>一秒后+1</button>
       </div>
     )
   }
@@ -40,7 +41,19 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     add1: ()=> dispatch({type: 'add', payload: 1}),
-    add2: ()=> dispatch({type: 'add', payload: 2})
+    add2: ()=> dispatch({type: 'add', payload: 2}),
+    add3: (x)=> {
+      if(x%2 === 1){
+        dispatch({type: 'add', payload: 1})
+      }else{
+        console.log('不是单数，不操作')
+      }
+    },
+    add4: ()=> {
+      setTimeout(()=>{
+        dispatch({type: 'add', payload: 1})
+      },1000)
+    }
   }
 }
 
