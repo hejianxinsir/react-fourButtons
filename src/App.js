@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Button from './components/button';
+import './css/App.css';
 
 
 class App extends Component {
@@ -12,6 +14,13 @@ class App extends Component {
         <button onClick={()=>this.props.add2()}>+2</button>
         <button onClick={()=>{this.props.add3(recordN)}}>单数则+1</button>
         <button onClick={()=>this.props.add4()}>一秒后+1</button>
+        <hr/>
+
+        <div className="btns">
+          <Button value="点我啊"></Button>
+          <Button value="点我别点它"></Button>
+          <Button value="先点我再说"></Button>
+        </div>
       </div>
     )
   }
