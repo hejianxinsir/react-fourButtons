@@ -17,12 +17,24 @@ class App extends Component {
         <hr/>
 
         <div className="btns">
-          <Button value="点我啊"></Button>
-          <Button value="点我别点它"></Button>
-          <Button value="先点我再说"></Button>
+          <Button value="点我啊" onClick={this.z.bind(this)}></Button>
+          <Button value="点我别点它" onClick={this.t.bind(this)}></Button>
+          <Button value="先点我再说" onClick={this.p.bind(this)}></Button>
         </div>
       </div>
     )
+  }
+
+  z(x){
+    console.log(x,'第一个 button 被点击了')
+  }
+
+  t(x){
+    console.log(x,'点击了第二个 button ')
+  }
+
+  p(x){
+    console.log(x,'点击了第三个 button')
   }
 }
 

@@ -24,6 +24,8 @@ export default class Button extends Component{
       deltaX: deltaX,
       deltaY: deltaY
     })
+
+    this.props.onClick.call(null, 'hello')
   }
 
   y(){
