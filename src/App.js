@@ -9,12 +9,13 @@ class App extends Component {
     let recordN = this.props.n
     return (
       <div className="App">
-        <div>你点击了{this.props.n}次</div>
-        <button onClick={()=>this.props.add1()}>+1</button>
-        <button onClick={()=>this.props.add2()}>+2</button>
-        <button onClick={()=>{this.props.add3(recordN)}}>单数则+1</button>
-        <button onClick={()=>this.props.add4()}>一秒后+1</button>
-        <hr/>
+        <div className="plus">
+          <div>你点击了{this.props.n}次</div>
+          <button onClick={()=>this.props.add1()}>+1</button>
+          <button onClick={()=>this.props.add2()}>+2</button>
+          <button onClick={()=>{this.props.add3(recordN)}}>单数则+1</button>
+          <button onClick={()=>this.props.add4()}>一秒后+1</button>
+        </div>
 
         <div className="btns">
           <Button value="点我啊" onClick={this.z.bind(this)}></Button>

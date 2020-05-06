@@ -7,7 +7,8 @@ export default class Button extends Component{
     this.state = {
       active: false,
       deltaX: 0,
-      deltaY: 0
+      deltaY: 0,
+      num: 0
     }
     this.myRef = React.createRef();
   }
@@ -22,7 +23,8 @@ export default class Button extends Component{
     this.setState({
       active: true,
       deltaX: deltaX,
-      deltaY: deltaY
+      deltaY: deltaY,
+      num: this.state.num + 1
     })
 
     this.props.onClick.call(null, 'hello')
@@ -37,12 +39,13 @@ export default class Button extends Component{
   render(props){
     return (
       <div>
+        <p>你点击了{this.state.num}</p>
         <button
           ref={this.myRef}
           className="btn1"
           onClick={this.x.bind(this)}
         >
-          <span className="btn-font">{this.props.value}</span>
+          <span className="btn-font">{this.props.value}</span>+1
           {
             this.state.active === true ? <span className="span"
               onAnimationEnd={this.y.bind(this)}
